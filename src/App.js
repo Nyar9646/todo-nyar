@@ -1,5 +1,6 @@
 /** top level component */
 
+import "./css/reset.css"
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
 import Form from "./components/Form";
