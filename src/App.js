@@ -3,8 +3,10 @@
 import "./css/reset.css"
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
-import Form from "./components/Form";
-import List from "./components/List";
+import Header from "./components/Header"
+import Footer from "./components/Footer";
+import Form from "./components/todo/Form";
+import List from "./components/todo/List";
 
 const App = () => {
   const [todos, setTodos] = useState([])
@@ -38,9 +40,10 @@ const App = () => {
 
   return (
     <>
-      <h1>todo-nyar</h1>
+      <Header />
       <Form addTodo={addTodo} />
       <List todos={todos} delTodo={delTodo} chkDoneAtTodo={chkDoneAtTodo} />
+      <Footer />
     </>
   )
 }
