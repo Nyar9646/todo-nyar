@@ -7,7 +7,7 @@ const HeaderStyle = styled.header`
   justify-content: space-between;
   padding: 0 20px;
   color: #fff;
-  background-color: black;
+  background-color: #283c86;
 `
 const HeaderLogo = styled.div`
   padding: 12px 0;

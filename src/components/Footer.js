@@ -9,7 +9,7 @@ const FooterStyle = styled.footer`
   align-items: center;
   font-size: small;
   color: #fff;
-  background-color: black;
+  background-color: #283c86;
 `
 
 const Footer = () => (
