@@ -21,6 +21,7 @@ const Form = ({addTodo}) => {
 
     addTodo(val)
     const inputContent = document.getElementById('inputContent')
+    setVal('')
     inputContent.value = ''
   }
 

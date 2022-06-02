@@ -12,7 +12,7 @@ const TodoTitle = styled.h2`
 const TodoWrapper = styled.div`
   width: 50%;
   height: 90%;
-  overflow: scroll;
+  overflow: hidden;
   border-radius: 8px;
   background: linear-gradient(-45deg, #283c86, #06beb6);
 `

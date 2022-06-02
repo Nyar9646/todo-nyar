@@ -3,7 +3,10 @@ import styled from "styled-components";
 import Item from "./Item";
 
 const TodoList = styled.ul`
-  margin-right: 0.5rem;
+  height: 90%;
+  overflow: scroll;
+  padding-bottom: 2rem;
+  margin-right: 1rem;
 `
 
 const List = ({todos, delTodo, chkDoneAtTodo}) => {

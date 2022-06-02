@@ -4,12 +4,41 @@ import styled from "styled-components";
 const TodoItem = styled.li`
   display: flex;
   justify-content: space-between;
-  text-align: center;
   border: 1px solid #999;
   border-radius: 24px;
   background-color: #f1ffff;
   padding: 0.5rem 1rem;
   margin-bottom: 0.5rem;
+  &:hover {
+    background-color: lightblue;
+  }
+`
+const TodoLabel = styled.label`
+  display: flex;
+  width: 90%;
+  align-items: center;
+  text-align: left;
+`
+const TodoCheck = styled.input`
+`
+const getContentDocoration = isDone => {
+  if (isDone) {
+    return `
+      text-decoration: line-through;
+      color: #999;
+    `
+  } else {
+    return `
+      text-decoration: none;
+      color: #000;
+    `
+  }
+}
+const TodoContent = styled.span`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  ${({isDone}) => getContentDocoration(isDone)}
 `
 const DeleteButton = styled.button`
   display: block;
@@ -22,8 +51,8 @@ const DeleteButton = styled.button`
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 3px; /* 棒の幅（太さ） */
-    height: 30px; /* 棒の高さ */
+    width: 3px;
+    height: 30px;
     background: #999;
   };
   &:before {
@@ -34,24 +63,13 @@ const DeleteButton = styled.button`
   }
 `
 
-const isDoneStyle = {
-  textDecoration: 'line-through',
-  color: '#999',
-}
-const isNotDoneStyle = {
-  textDecoration: 'none',
-  color: '#000',
-}
-
 const Item = ({todo, delTodo, chkDoneAtTodo}) => {
-  const contentStyle = todo.isDone ? isDoneStyle : isNotDoneStyle
-
   return (
     <TodoItem>
-      <span>
-        <input type='checkbox' onChange={() => chkDoneAtTodo(todo.id)} checked={todo.isDone} />
-        <span style={contentStyle}>{todo.content}</span>
-      </span>
+      <TodoLabel>
+        <TodoCheck type='checkbox' onChange={() => chkDoneAtTodo(todo.id)} checked={todo.isDone} />
+        <TodoContent isDone={todo.isDone}>{todo.content}</TodoContent>
+      </TodoLabel>
       <DeleteButton onClick={e => delTodo(todo.id)}/>
     </TodoItem>
   )
