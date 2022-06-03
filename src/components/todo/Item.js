@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const TodoItem = styled.li`
   display: flex;
+  height: 4rem;
   justify-content: space-between;
   border: 1px solid #999;
   border-radius: 24px;
@@ -13,11 +14,11 @@ const TodoItem = styled.li`
     background-color: lightblue;
   }
 `
-const TodoLabel = styled.label`
+const TodoLabel = styled.span`
   display: flex;
   width: 90%;
   align-items: center;
-  text-align: left;
+  cursor: grab;
 `
 const TodoCheck = styled.input`
 `
@@ -43,16 +44,16 @@ const TodoContent = styled.span`
 const DeleteButton = styled.button`
   display: block;
   position: relative;
-  width: 30px;
-  height: 30px;
   background-color: #f1ffff;
+  cursor: pointer;
+  margin-right: 1rem;
   &:before, &:after {
     content: "";
     position: absolute;
     top: 50%;
     left: 50%;
     width: 3px;
-    height: 30px;
+    height: 3rem;
     background: #999;
   };
   &:before {

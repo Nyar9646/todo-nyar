@@ -5,7 +5,7 @@ import Form from "./Form";
 import List from "./List";
 
 const TodoSection = styled.section`
-  height: 720px;
+  height: 72rem;
 `
 const TodoTitle = styled.h2`
 `

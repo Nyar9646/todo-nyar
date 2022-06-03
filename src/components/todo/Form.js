@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const TextForm = styled.input`
   width: 20rem;
-  height: 3rem;
+  height: 4rem;
   padding-left: 1rem;
   margin: 1rem;
   border: 1px solid #999;
