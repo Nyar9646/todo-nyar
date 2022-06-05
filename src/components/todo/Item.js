@@ -6,7 +6,7 @@ const TodoItem = styled.li`
   height: 4rem;
   justify-content: space-between;
   border: 1px solid #999;
-  border-radius: 24px;
+  border-radius: 2rem;
   background-color: #f1ffff;
   padding: 0.5rem 1rem;
   margin-bottom: 0.5rem;
