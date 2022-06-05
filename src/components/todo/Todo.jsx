@@ -49,7 +49,7 @@ const Todo = () => {
 
   return (
     <TodoSection>
-      <TodoTitle>Make my todos ...</TodoTitle>
+      <TodoTitle>何しよう？</TodoTitle>
       <TodoWrapper>
         <Form addTodo={addTodo} />
         <List todos={todos} delTodo={delTodo} chkDoneAtTodo={chkDoneAtTodo} />
