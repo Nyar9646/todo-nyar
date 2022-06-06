@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import * as React from "react";
+import { useState } from "react"
 import styled from "styled-components";
 
 const TextForm = styled.input`
@@ -12,7 +13,7 @@ const TextForm = styled.input`
 const Form = ({addTodo}) => {
   const [val, setVal] = useState('')
 
-  const handleSubmit = e => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
 
     if(val === '') {
@@ -20,15 +21,14 @@ const Form = ({addTodo}) => {
     }
 
     addTodo(val)
-    const inputContent = document.getElementById('inputContent')
     setVal('')
-    inputContent.value = ''
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <TextForm id='inputContent' type='text' placeholder="Please enter!"
         onChange={e => setVal(e.target.value)}
+        value={val}
       />
     </form>
   )

@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import * as React from "react";
+import { useState } from "react"
 import { nanoid } from "nanoid";
 import styled from "styled-components";
 import Form from "./Form";
@@ -17,10 +18,10 @@ const TodoWrapper = styled.div`
   background: linear-gradient(-45deg, #283c86, #06beb6);
 `
 
-const Todo = () => {
+const Todo: React.FC = () => {
   const [todos, setTodos] = useState([])
 
-  const addTodo = newContent => {
+  const addTodo = (newContent: String) => {
     setTodos([
       ...todos,
       {
@@ -31,11 +32,11 @@ const Todo = () => {
     ])
   }
 
-  const delTodo = delId => {
+  const delTodo = (delId: String) => {
     setTodos(todos.filter(todo => todo.id !== delId))
   }
 
-  const chkDoneAtTodo = chkId => {
+  const chkDoneAtTodo = (chkId: String) => {
     const updTodos = todos.map(todo => {
       if (todo.id === chkId) {
         todo.isDone = !todo.isDone

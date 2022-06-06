@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import styled from "styled-components";
 
 const HamStyle = styled.div`
@@ -15,7 +15,7 @@ const NavStyle = styled.nav`
   }
 `
 
-const Nav = () => (
+const Nav: React.FC = () => (
   <>
     <HamStyle>
       <span />

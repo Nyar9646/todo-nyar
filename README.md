@@ -1,6 +1,27 @@
 # todo-nyar
+<!-- https://nyar9646.github.io/todo-nyar/ -->
+
+## Consepts
+<!-- 直近で、__自分が何をしたらいいかわからない方向け__ の Todo 機能。 -->
+
+### function
+- Todo
+
+## Recommendation
+- Chrome97
+
+---
 
 ## Environmente
+### strage
+<!-- - Web Storage localStorage
+  - ページを閉じても再度アクセスした場合はデータを使って復元
+    - Chrome : 5MB -->
+
+### store
+- React hooks
+
+### installs
 - $ npx create-react-app todo-nyar
 - $ yarn add nanoid
 - $ yarn add styled-components
@@ -9,21 +30,10 @@
 - $ yarn add ts-loader @types/react @types/react-dom
 - $ yarn add webpack-dev-server
 
-## Recommendation
-- Chrome97
-
-## store
-<!-- - FireBase
-  - 保管するデータは中小規模を予測
-  - BaaS を利用することで表示ロジックに専念したい -->
-
-## Function
-- Todo
-
 ### other
 - reset CSS
 
-### remind
-- get FontAwesome icon @ HTML/CSSによる静的サイトのコーディング実習.HTML/CSS基礎講座 Vol.1
-- @ HTML/CSSによる静的サイトのコーディング実習.レスポンシブ講座 Vol.1~2
-- todo list を掴んで移動
+## Todo
+- FontAwesome
+- レスポンシブ
+- todo list 掴んで移動

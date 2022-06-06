@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import styled from 'styled-components'
 import Nav from "./Nav";
 
@@ -16,7 +16,7 @@ const HeaderLogo = styled.div`
   font-size: 2rem;
 `
 
-const Header = () => (
+const Header: React.FC = () => (
   <HeaderStyle>
     <HeaderLogo>What to do ?</HeaderLogo>
     <Nav />

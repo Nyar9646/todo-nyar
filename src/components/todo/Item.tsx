@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import styled from "styled-components";
 
 const TodoItem = styled.li`
@@ -22,7 +22,7 @@ const TodoLabel = styled.span`
 `
 const TodoCheck = styled.input`
 `
-const getContentDocoration = isDone => {
+const getContentDocoration = (isDone: boolean) => {
   if (isDone) {
     return `
       text-decoration: line-through;
@@ -71,7 +71,7 @@ const Item = ({todo, delTodo, chkDoneAtTodo}) => {
         <TodoCheck type='checkbox' onChange={() => chkDoneAtTodo(todo.id)} checked={todo.isDone} />
         <TodoContent isDone={todo.isDone}>{todo.content}</TodoContent>
       </TodoLabel>
-      <DeleteButton onClick={e => delTodo(todo.id)}/>
+      <DeleteButton onClick={() => delTodo(todo.id)}/>
     </TodoItem>
   )
 }

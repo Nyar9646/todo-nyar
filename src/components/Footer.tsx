@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import styled from "styled-components";
 
 const FooterStyle = styled.footer`
@@ -12,7 +12,7 @@ const FooterStyle = styled.footer`
   background-color: #283c86;
 `
 
-const Footer = () => (
+const Footer: React.FC = () => (
   <FooterStyle>@2022 created by Nyar</FooterStyle>
 )
 
