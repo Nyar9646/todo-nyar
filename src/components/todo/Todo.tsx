@@ -1,9 +1,17 @@
 import * as React from "react";
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { nanoid } from "nanoid";
 import styled from "styled-components";
+
+import {
+  canNotUseLocalStorage,
+  toDataArray,
+  setLocaoStorageWithObject
+} from "../../utils/useLocalStorage";
 import Form from "./Form";
 import List from "./List";
+
+const StrageKey = 'strage/todos'
 
 const TodoSection = styled.section`
   height: 72rem;
@@ -19,9 +27,13 @@ const TodoWrapper = styled.div`
 `
 
 const Todo: React.FC = () => {
-  const [todos, setTodos] = useState([])
+  if (canNotUseLocalStorage) {
+    alert('当機能は、WEB Strage である、localStorage の機能を用いています。この機能が有効であることを確認してください')
+  }
 
-  const addTodo = (newContent: String) => {
+  const [todos, setTodos] = useState(toDataArray(StrageKey) || [])
+
+  const addTodo = (newContent: string) => {
     setTodos([
       ...todos,
       {
@@ -32,11 +44,11 @@ const Todo: React.FC = () => {
     ])
   }
 
-  const delTodo = (delId: String) => {
-    setTodos(todos.filter(todo => todo.id !== delId))
+  const delTodo = (delId: string) => {
+    setTodos(todos.filter((todo: any) => todo.id !== delId))
   }
 
-  const chkDoneAtTodo = (chkId: String) => {
+  const chkDoneAtTodo = (chkId: string) => {
     const updTodos = todos.map(todo => {
       if (todo.id === chkId) {
         todo.isDone = !todo.isDone
@@ -47,6 +59,10 @@ const Todo: React.FC = () => {
 
     setTodos([...updTodos])
   }
+
+  useEffect(() => {
+    setLocaoStorageWithObject(StrageKey, todos)
+  }, [todos])
 
   return (
     <TodoSection>

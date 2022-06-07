@@ -14,14 +14,21 @@
 
 ## Environmente
 ### strage
-<!-- - Web Storage localStorage
+- Web Storage localStorage
   - ページを閉じても再度アクセスした場合はデータを使って復元
-    - Chrome : 5MB -->
+    - Chrome : 5MB
 
 ### store
 - React hooks
 
-### installs
+### a little feature
+- styled-component
+- typescript
+- webpack-dev-server
+- reset CSS
+
+<details>
+<summary>installs</summary>
 - $ npx create-react-app todo-nyar
 - $ yarn add nanoid
 - $ yarn add styled-components
@@ -29,11 +36,11 @@
 - $ yarn add typescript
 - $ yarn add ts-loader @types/react @types/react-dom
 - $ yarn add webpack-dev-server
-
-### other
-- reset CSS
+</details>
 
 ## Todo
-- FontAwesome
-- レスポンシブ
-- todo list 掴んで移動
+- [] .env 対応
+  - [] StrageKey
+- [] FontAwesome
+- [] レスポンシブ
+- [] todo list 掴んで移動
