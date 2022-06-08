@@ -3,15 +3,24 @@ import styled from "styled-components";
 
 const TodoItem = styled.li`
   display: flex;
-  height: 4rem;
+  height: 4.5rem;
   justify-content: space-between;
   border: 1px solid #999;
   border-radius: 2rem;
   background-color: #f1ffff;
   padding: 0.5rem 1rem;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem;
   &:hover {
-    background-color: lightblue;
+    background-color: #dfd;
+  }
+  &:active {
+    cursor: grabbing;
+    box-shadow: 0 0 1rem 2px #fff;
+    transition: box-shadow .3s;
+    position: absolute;
+  }
+  &:not(:last-child) {
+    margin-bottom: 1rem;
   }
 `
 const TodoLabel = styled.span`
@@ -19,6 +28,9 @@ const TodoLabel = styled.span`
   width: 90%;
   align-items: center;
   cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
 `
 const TodoCheck = styled.input`
 `
