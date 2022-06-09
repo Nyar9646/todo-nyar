@@ -17,10 +17,6 @@ const TodoItem = styled.li`
     cursor: grabbing;
     box-shadow: 0 0 1rem 2px #fff;
     transition: box-shadow .3s;
-    position: absolute;
-  }
-  &:not(:last-child) {
-    margin-bottom: 1rem;
   }
 `
 const TodoLabel = styled.span`

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react"
 import { nanoid } from "nanoid";
 import styled from "styled-components";
 
+import { TodoObj } from "../../utils/interfaces";
 import {
   canNotUseLocalStorage,
   toDataArray,
@@ -34,22 +35,25 @@ const Todo: React.FC = () => {
   const [todos, setTodos] = useState(toDataArray(StrageKey) || [])
 
   const addTodo = (newContent: string) => {
+    const orderNum = todos.length > 0 ? Math.max(...todos.map((todo: TodoObj) => todo.order)) + 1 : 1
+
     setTodos([
       ...todos,
       {
         id: nanoid(),
         content: newContent,
         isDone: false,
+        order: orderNum,
       },
     ])
   }
 
   const delTodo = (delId: string) => {
-    setTodos(todos.filter((todo: any) => todo.id !== delId))
+    setTodos(todos.filter((todo: TodoObj) => todo.id !== delId))
   }
 
   const chkDoneAtTodo = (chkId: string) => {
-    const updTodos = todos.map(todo => {
+    const updTodos = todos.map((todo: TodoObj) => {
       if (todo.id === chkId) {
         todo.isDone = !todo.isDone
       }
@@ -62,6 +66,7 @@ const Todo: React.FC = () => {
 
   useEffect(() => {
     setLocaoStorageWithObject(StrageKey, todos)
+    console.log(todos)
   }, [todos])
 
   return (

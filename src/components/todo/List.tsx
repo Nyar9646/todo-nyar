@@ -1,5 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
+import { TodoObj } from "../../utils/interfaces";
 import Item from "./Item";
 
 const TodoList = styled.ul`
@@ -13,7 +14,7 @@ const List = ({todos, delTodo, chkDoneAtTodo}) => {
   return (
     <TodoList>
       {
-        todos.map(todo => (
+        todos.map((todo: TodoObj) => (
           <Item key={todo.id} todo={todo} delTodo={delTodo} chkDoneAtTodo={chkDoneAtTodo} />
         ))
       }

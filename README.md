@@ -10,6 +10,9 @@
 ## Recommendation
 - Chrome97
 
+## Code
+- ES2015
+
 ---
 
 ## Environmente
