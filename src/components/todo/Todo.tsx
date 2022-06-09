@@ -49,7 +49,17 @@ const Todo: React.FC = () => {
   }
 
   const delTodo = (delId: string) => {
-    setTodos(todos.filter((todo: TodoObj) => todo.id !== delId))
+    const deleteOrder = todos.filter((todo: TodoObj) => todo.id === delId)[0].order
+    const afterTodos = todos.filter((todo: TodoObj) => todo.id !== delId)
+
+    const organizedTodos = afterTodos.map((todo: TodoObj) => {
+      if (todo.order > deleteOrder) {
+        todo.order = todo.order - 1
+      }
+      return todo
+    })
+
+    setTodos(organizedTodos)
   }
 
   const chkDoneAtTodo = (chkId: string) => {
@@ -57,7 +67,6 @@ const Todo: React.FC = () => {
       if (todo.id === chkId) {
         todo.isDone = !todo.isDone
       }
-
       return todo
     })
 
@@ -66,7 +75,6 @@ const Todo: React.FC = () => {
 
   useEffect(() => {
     setLocaoStorageWithObject(StrageKey, todos)
-    console.log(todos)
   }, [todos])
 
   return (
