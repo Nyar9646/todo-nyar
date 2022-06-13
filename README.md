@@ -46,8 +46,7 @@
 </details>
 
 ## Todo
-- [] .env 対応
-  - [] StrageKey
-- [] FontAwesome
-- [] レスポンシブ
-- [x] todo list 掴んで移動
+- .env 対応
+  - StrageKey
+- FontAwesome
+- レスポンシブ
