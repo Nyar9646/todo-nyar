@@ -3,6 +3,8 @@
 
 ## Consepts
 <!-- 直近で、__自分が何をしたらいいかわからない方向け__ の Todo 機能。 -->
+シンプルなtodoリスト。
+掴んで並び順を移動可能。
 
 ### function
 - Todo
@@ -28,6 +30,7 @@
 - styled-component
 - typescript
 - webpack-dev-server
+- react-beautifl-dnd
 - reset CSS
 
 <details>
@@ -47,4 +50,4 @@
   - [] StrageKey
 - [] FontAwesome
 - [] レスポンシブ
-- [] todo list 掴んで移動
+- [x] todo list 掴んで移動
