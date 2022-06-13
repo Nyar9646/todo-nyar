@@ -3,10 +3,10 @@ import { useState } from "react"
 import styled from "styled-components";
 
 const TextForm = styled.input`
-  width: 20rem;
+  width: 30vw;
   height: 4rem;
   padding-left: 1rem;
-  margin: 1rem;
+  margin: 2rem 0 2rem 0;
   border: 1px solid #999;
 `
 

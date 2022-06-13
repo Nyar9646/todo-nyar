@@ -33,12 +33,13 @@
 <details>
 <summary>installs</summary>
 - $ npx create-react-app todo-nyar
-- $ yarn add nanoid
-- $ yarn add styled-components
 - $ yarn add webpack webpack-cli
 - $ yarn add typescript
 - $ yarn add ts-loader @types/react @types/react-dom
 - $ yarn add webpack-dev-server
+- $ yarn add nanoid
+- $ yarn add styled-components @material-ui/core
+- $ yarn add array-move react-beautiful-dnd @types/react-beautiful-dnd
 </details>
 
 ## Todo

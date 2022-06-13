@@ -15,16 +15,17 @@ import List from "./List";
 const StrageKey = 'strage/todos'
 
 const TodoSection = styled.section`
-  height: 72rem;
+  height: 88vh;
 `
 const TodoTitle = styled.h2`
 `
 const TodoWrapper = styled.div`
   width: 50%;
-  height: 90%;
+  height: 80vh;
   overflow: hidden;
   border-radius: 8px;
   background: linear-gradient(-45deg, #283c86, #06beb6);
+  padding: 0 1rem 0 2rem;
 `
 
 const Todo: React.FC = () => {
@@ -75,6 +76,7 @@ const Todo: React.FC = () => {
 
   useEffect(() => {
     setLocaoStorageWithObject(StrageKey, todos)
+    console.log(todos)
   }, [todos])
 
   return (
@@ -82,7 +84,7 @@ const Todo: React.FC = () => {
       <TodoTitle>何しよう？</TodoTitle>
       <TodoWrapper>
         <Form addTodo={addTodo} />
-        <List todos={todos} delTodo={delTodo} chkDoneAtTodo={chkDoneAtTodo} />
+        <List todos={todos} delTodo={delTodo} chkDoneAtTodo={chkDoneAtTodo} setTodos={setTodos} />
       </TodoWrapper>
     </TodoSection>
   )

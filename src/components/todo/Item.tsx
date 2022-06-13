@@ -1,34 +1,32 @@
 import * as React from "react";
+import { Draggable, DraggableProvided } from "react-beautiful-dnd";
 import styled from "styled-components";
+import { ListItem } from "@material-ui/core";
 
-const TodoItem = styled.li`
+const TodoItem = styled(ListItem)`
   display: flex;
   height: 4.5rem;
   justify-content: space-between;
-  border: 1px solid #999;
-  border-radius: 2rem;
+  border-radius: 4px;
   background-color: #f1ffff;
-  padding: 0.5rem 1rem;
-  margin: 0.5rem;
+  margin-bottom: 1rem;
+  cursor: grab;
   &:hover {
     background-color: #dfd;
   }
   &:active {
-    cursor: grabbing;
     box-shadow: 0 0 1rem 2px #fff;
     transition: box-shadow .3s;
+    cursor: grabbing;
   }
 `
 const TodoLabel = styled.span`
   display: flex;
-  width: 90%;
   align-items: center;
-  cursor: grab;
-  &:active {
-    cursor: grabbing;
-  }
+  width: 100%;
 `
-const TodoCheck = styled.input`
+const TodoCheck = styled.input.attrs({type: 'checkbox'})`
+  margin-right: 2rem;
 `
 const getContentDocoration = (isDone: boolean) => {
   if (isDone) {
@@ -45,6 +43,7 @@ const getContentDocoration = (isDone: boolean) => {
 }
 const TodoContent = styled.span`
   white-space: nowrap;
+  font-size: 16px;
   overflow: hidden;
   text-overflow: ellipsis;
   ${({isDone}) => getContentDocoration(isDone)}
@@ -53,8 +52,8 @@ const DeleteButton = styled.button`
   display: block;
   position: relative;
   background-color: #f1ffff;
+  right: 1rem;
   cursor: pointer;
-  margin-right: 1rem;
   &:before, &:after {
     content: "";
     position: absolute;
@@ -74,13 +73,17 @@ const DeleteButton = styled.button`
 
 const Item = ({todo, delTodo, chkDoneAtTodo}) => {
   return (
-    <TodoItem>
-      <TodoLabel>
-        <TodoCheck type='checkbox' onChange={() => chkDoneAtTodo(todo.id)} checked={todo.isDone} />
-        <TodoContent isDone={todo.isDone}>{todo.content}</TodoContent>
-      </TodoLabel>
-      <DeleteButton onClick={() => delTodo(todo.id)}/>
-    </TodoItem>
+    <Draggable key={todo.id} draggableId={todo.id} index={todo.order}>
+      {(provided: DraggableProvided) => (
+        <TodoItem ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+          <TodoLabel>
+            <TodoCheck type='checkbox' onChange={() => chkDoneAtTodo(todo.id)} checked={todo.isDone} />
+            <TodoContent isDone={todo.isDone}>{todo.content}</TodoContent>
+          </TodoLabel>
+          <DeleteButton onClick={() => delTodo(todo.id)}/>
+        </TodoItem>
+      )}
+    </Draggable>
   )
 }
 
