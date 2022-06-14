@@ -1,6 +1,6 @@
 export interface TodoObj {
   id: string,
   content: string,
-  isDone: boolean,
+  isFavorite: boolean,
   order: number,
 }

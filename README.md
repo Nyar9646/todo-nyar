@@ -3,8 +3,9 @@
 
 ## Consepts
 <!-- 直近で、__自分が何をしたらいいかわからない方向け__ の Todo 機能。 -->
-シンプルなtodoリスト。
-掴んで並び順を移動可能。
+シンプルなtodoリスト。掴んで並び順を移動可能。
+<!-- ### Way made
+1年勉強した内容を盛り込みたかった -->
 
 ### function
 - Todo
@@ -50,3 +51,8 @@
   - StrageKey
 - FontAwesome
 - レスポンシブ
+
+<details>
+<summary>苦労した点</summary>
+- リストドラッグの機能を、当初は react-draggable-dnd を使用しようとしたが、うまくいかず、調整に時間がかかりました。
+</details>

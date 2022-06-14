@@ -3,6 +3,8 @@ import { Draggable, DraggableProvided } from "react-beautiful-dnd";
 import styled from "styled-components";
 import { ListItem } from "@material-ui/core";
 
+import { FavoriteStar } from "../../utils/FavoriteShape";
+
 const TodoItem = styled(ListItem)`
   display: flex;
   height: 4.5rem;
@@ -25,28 +27,12 @@ const TodoLabel = styled.span`
   align-items: center;
   width: 100%;
 `
-const TodoCheck = styled.input.attrs({type: 'checkbox'})`
-  margin-right: 2rem;
-`
-const getContentDocoration = (isDone: boolean) => {
-  if (isDone) {
-    return `
-      text-decoration: line-through;
-      color: #999;
-    `
-  } else {
-    return `
-      text-decoration: none;
-      color: #000;
-    `
-  }
-}
 const TodoContent = styled.span`
   white-space: nowrap;
   font-size: 16px;
   overflow: hidden;
   text-overflow: ellipsis;
-  ${({isDone}) => getContentDocoration(isDone)}
+  padding-left: 1rem;
 `
 const DeleteButton = styled.button`
   display: block;
@@ -71,14 +57,14 @@ const DeleteButton = styled.button`
   }
 `
 
-const Item = ({todo, delTodo, chkDoneAtTodo}) => {
+const Item = ({todo, delTodo, switchFavorite}): JSX.Element => {
   return (
     <Draggable key={todo.id} draggableId={todo.id} index={todo.order}>
       {(provided: DraggableProvided) => (
         <TodoItem ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
           <TodoLabel>
-            <TodoCheck type='checkbox' onChange={() => chkDoneAtTodo(todo.id)} checked={todo.isDone} />
-            <TodoContent isDone={todo.isDone}>{todo.content}</TodoContent>
+            <FavoriteStar isSwitching={todo.isFavorite} onClick={() => switchFavorite(todo.id)} />
+            <TodoContent>{todo.content}</TodoContent>
           </TodoLabel>
           <DeleteButton onClick={() => delTodo(todo.id)}/>
         </TodoItem>

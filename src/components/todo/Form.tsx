@@ -10,10 +10,10 @@ const TextForm = styled.input`
   border: 1px solid #999;
 `
 
-const Form = ({addTodo}) => {
+const Form = ({addTodo}): JSX.Element => {
   const [val, setVal] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault()
 
     if(val === '') {
@@ -27,7 +27,7 @@ const Form = ({addTodo}) => {
   return (
     <form onSubmit={handleSubmit}>
       <TextForm id='inputContent' type='text' placeholder="Please enter!"
-        onChange={e => setVal(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setVal(e.target.value)}
         value={val}
       />
     </form>

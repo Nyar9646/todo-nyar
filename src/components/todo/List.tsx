@@ -12,18 +12,18 @@ const StyledTodoList = styled(UiList)`
   overflow: scroll;
 `
 
-const List = ({todos, delTodo, chkDoneAtTodo, setTodos}) => {
-  const handleOnDragEnd = (result: any) => {
+const List = ({todos, delTodo, switchFavorite, setTodos}): JSX.Element => {
+  const handleOnDragEnd = (result: any): void => {
     if (!result.destination) {
       return
     }
 
     const startIndex = result.source.index - 1
     const endIndex = result.destination.index - 1
-    console.log(startIndex, endIndex)
 
-    const orderedTodos = arrayMoveImmutable(todos, startIndex, endIndex).map((todo: TodoObj, index: number) => {
-      return {...todo, order: index + 1}
+    const orderedTodos = arrayMoveImmutable(todos, startIndex, endIndex)
+      .map((todo: TodoObj, index: number) => {
+        return {...todo, order: index + 1}
     })
 
     setTodos(orderedTodos)
@@ -37,7 +37,7 @@ const List = ({todos, delTodo, chkDoneAtTodo, setTodos}) => {
             {...provided.droppableProps} ref={provided.innerRef}
           >
             {todos.map((todo: TodoObj) => (
-              <Item key={todo.id} todo={todo} delTodo={delTodo} chkDoneAtTodo={chkDoneAtTodo} />
+              <Item key={todo.id} todo={todo} delTodo={delTodo} switchFavorite={switchFavorite} />
             ))}
             {provided.placeholder}
           </StyledTodoList>

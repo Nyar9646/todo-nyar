@@ -12,8 +12,8 @@ const FooterStyle = styled.footer`
   background-color: #283c86;
 `
 
-const Footer: React.FC = () => (
-  <FooterStyle>@2022 created by Nyar</FooterStyle>
+const Footer: React.FC = (): JSX.Element => (
+  <FooterStyle>@2022-06  Nyar</FooterStyle>
 )
 
 export default Footer

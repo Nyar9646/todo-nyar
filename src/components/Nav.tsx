@@ -15,7 +15,7 @@ const NavStyle = styled.nav`
   }
 `
 
-const Nav: React.FC = () => (
+const Nav: React.FC = (): JSX.Element => (
   <>
     <HamStyle>
       <span />

@@ -12,7 +12,7 @@ import {
 import Form from "./Form";
 import List from "./List";
 
-const StrageKey = 'strage/todos'
+const StrageKey: string = 'strage/todos'
 
 const TodoSection = styled.section`
   height: 88vh;
@@ -28,29 +28,30 @@ const TodoWrapper = styled.div`
   padding: 0 1rem 0 2rem;
 `
 
-const Todo: React.FC = () => {
+const Todo: React.FC = (): JSX.Element => {
   if (canNotUseLocalStorage) {
     alert('当機能は、WEB Strage である、localStorage の機能を用いています。この機能が有効であることを確認してください')
   }
 
   const [todos, setTodos] = useState(toDataArray(StrageKey) || [])
 
-  const addTodo = (newContent: string) => {
-    const orderNum = todos.length > 0 ? Math.max(...todos.map((todo: TodoObj) => todo.order)) + 1 : 1
+  const addTodo = (newContent: string): void => {
+    const orderNum: number = todos.length > 0
+      ? Math.max(...todos.map((todo: TodoObj) => todo.order)) + 1 : 1
 
     setTodos([
       ...todos,
       {
         id: nanoid(),
         content: newContent,
-        isDone: false,
+        isFavorite: false,
         order: orderNum,
       },
     ])
   }
 
-  const delTodo = (delId: string) => {
-    const deleteOrder = todos.filter((todo: TodoObj) => todo.id === delId)[0].order
+  const delTodo = (delId: string): void => {
+    const deleteOrder: number = todos.filter((todo: TodoObj) => todo.id === delId)[0].order
     const afterTodos = todos.filter((todo: TodoObj) => todo.id !== delId)
 
     const organizedTodos = afterTodos.map((todo: TodoObj) => {
@@ -63,10 +64,10 @@ const Todo: React.FC = () => {
     setTodos(organizedTodos)
   }
 
-  const chkDoneAtTodo = (chkId: string) => {
+  const switchFavorite = (chkId: string): void => {
     const updTodos = todos.map((todo: TodoObj) => {
       if (todo.id === chkId) {
-        todo.isDone = !todo.isDone
+        todo.isFavorite = !todo.isFavorite
       }
       return todo
     })
@@ -84,7 +85,7 @@ const Todo: React.FC = () => {
       <TodoTitle>何しよう？</TodoTitle>
       <TodoWrapper>
         <Form addTodo={addTodo} />
-        <List todos={todos} delTodo={delTodo} chkDoneAtTodo={chkDoneAtTodo} setTodos={setTodos} />
+        <List todos={todos} delTodo={delTodo} switchFavorite={switchFavorite} setTodos={setTodos} />
       </TodoWrapper>
     </TodoSection>
   )

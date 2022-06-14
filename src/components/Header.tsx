@@ -16,7 +16,7 @@ const HeaderLogo = styled.div`
   font-size: 2rem;
 `
 
-const Header: React.FC = () => (
+const Header: React.FC = (): JSX.Element => (
   <HeaderStyle>
     <HeaderLogo>What to do ?</HeaderLogo>
     <Nav />
