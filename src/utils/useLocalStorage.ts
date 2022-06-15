@@ -1,9 +1,9 @@
-export const canNotUseLocalStorage = !window.localStorage
+export const canNotUseLocalStorage: boolean = !window.localStorage
 
-export const toDataArray = (key: string) => JSON.parse(localStorage.getItem(key))
+export const toDataArray = (key: string): any => JSON.parse(localStorage.getItem(key))
 
-const toDataJson = (data: object) => JSON.stringify(data)
+const toDataJson = (data: object): any => JSON.stringify(data)
 
-export const setLocaoStorageWithObject = (key: string, data: object) => {
+export const setLocaoStorageWithObject = (key: string, data: object): void => {
   localStorage.setItem(key, toDataJson(data))
 }

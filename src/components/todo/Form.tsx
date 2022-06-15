@@ -6,17 +6,20 @@ const TextForm = styled.input`
   width: 30vw;
   height: 4rem;
   padding-left: 1rem;
-  margin: 2rem 0 2rem 0;
+  margin: 1rem 0 1rem 0;
   border: 1px solid #999;
 `
+const TodoNum = styled.span`
+  padding-left: 1rem;
+`
 
-const Form = ({addTodo}): JSX.Element => {
+const Form = ({addTodo, todosNum}): JSX.Element => {
   const [val, setVal] = useState('')
 
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault()
 
-    if(val === '') {
+    if (val === '') {
       return
     }
 
@@ -30,6 +33,7 @@ const Form = ({addTodo}): JSX.Element => {
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setVal(e.target.value)}
         value={val}
       />
+      <TodoNum>{todosNum} todos</TodoNum>
     </form>
   )
 }

@@ -1,20 +1,23 @@
 # todo-nyar
-<!-- https://nyar9646.github.io/todo-nyar/ -->
+https://nyar9646.github.io/todo-nyar/
 
 ## Consepts
-<!-- 直近で、__自分が何をしたらいいかわからない方向け__ の Todo 機能。 -->
-シンプルなtodoリスト。掴んで並び順を移動可能。
-<!-- ### Way made
-1年勉強した内容を盛り込みたかった -->
+画像を使用しない、シンプルなtodoリスト
 
-### function
+## function
 - Todo
+  1. todo の登録・削除
+  2. お気に入り
+  3. todo リストの並び替え
 
-## Recommendation
+### Recommendation
 - Chrome97
 
-## Code
+### Code
 - ES2015
+
+<!-- ### Way made
+1年勉強した内容を盛り込みたかった -->
 
 ---
 
@@ -44,13 +47,13 @@
 - $ yarn add nanoid
 - $ yarn add styled-components @material-ui/core
 - $ yarn add array-move react-beautiful-dnd @types/react-beautiful-dnd
+- $ yarn add react-tabs
 </details>
 
-## Todo
+### Todo
 - .env 対応
   - StrageKey
-- FontAwesome
-- レスポンシブ
+- レスポンシブ確認
 
 <details>
 <summary>苦労した点</summary>

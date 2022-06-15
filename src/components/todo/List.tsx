@@ -7,22 +7,22 @@ import { List as UiList } from "@material-ui/core";
 import { TodoObj } from "../../utils/interfaces";
 import Item from "./Item";
 
+const listHeight: string = '90%'
+
 const StyledTodoList = styled(UiList)`
-  height: 90%;
+  height: ${listHeight};
   overflow: scroll;
 `
 
 const List = ({todos, delTodo, switchFavorite, setTodos}): JSX.Element => {
   const handleOnDragEnd = (result: any): void => {
-    if (!result.destination) {
-      return
-    }
+    if (!result.destination) return
 
     const startIndex = result.source.index - 1
     const endIndex = result.destination.index - 1
 
     const orderedTodos = arrayMoveImmutable(todos, startIndex, endIndex)
-      .map((todo: TodoObj, index: number) => {
+      .map((todo: TodoObj, index: number): TodoObj => {
         return {...todo, order: index + 1}
     })
 

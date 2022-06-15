@@ -1,43 +1,38 @@
 import * as React from "react";
 import { useState, useEffect } from "react"
+import { Tab as TabLink, Tabs, TabList, TabPanel } from "react-tabs";
 import { nanoid } from "nanoid";
 import styled from "styled-components";
 
 import { TodoObj } from "../../utils/interfaces";
-import {
-  canNotUseLocalStorage,
-  toDataArray,
-  setLocaoStorageWithObject
-} from "../../utils/useLocalStorage";
+import { canNotUseLocalStorage, toDataArray, setLocaoStorageWithObject } from "../../utils/useLocalStorage";
 import Form from "./Form";
 import List from "./List";
 
 const StrageKey: string = 'strage/todos'
 
-const TodoSection = styled.section`
+const TodoTabs = styled(Tabs)`
+  width: 50%;
   height: 88vh;
-`
-const TodoTitle = styled.h2`
+  overflow: hidden;
+  padding: 1rem;
 `
 const TodoWrapper = styled.div`
-  width: 50%;
   height: 80vh;
-  overflow: hidden;
-  border-radius: 8px;
-  background: linear-gradient(-45deg, #283c86, #06beb6);
-  padding: 0 1rem 0 2rem;
 `
 
-const Todo: React.FC = (): JSX.Element => {
+const Tab: React.FC = (): JSX.Element => {
   if (canNotUseLocalStorage) {
     alert('当機能は、WEB Strage である、localStorage の機能を用いています。この機能が有効であることを確認してください')
   }
 
   const [todos, setTodos] = useState(toDataArray(StrageKey) || [])
 
+  const getFavoriteTodos = ():[TodoObj] => todos.filter((todos: TodoObj) => todos.isFavorite === true)
+  let favoriteTodos: [TodoObj] = getFavoriteTodos()
+
   const addTodo = (newContent: string): void => {
-    const orderNum: number = todos.length > 0
-      ? Math.max(...todos.map((todo: TodoObj) => todo.order)) + 1 : 1
+    const orderNum: number = todos.length > 0 ? Math.max(...todos.map((todo: TodoObj) => todo.order)) + 1 : 1
 
     setTodos([
       ...todos,
@@ -76,19 +71,31 @@ const Todo: React.FC = (): JSX.Element => {
   }
 
   useEffect(() => {
+    favoriteTodos = getFavoriteTodos()
     setLocaoStorageWithObject(StrageKey, todos)
     console.log(todos)
   }, [todos])
 
   return (
-    <TodoSection>
-      <TodoTitle>何しよう？</TodoTitle>
-      <TodoWrapper>
-        <Form addTodo={addTodo} />
-        <List todos={todos} delTodo={delTodo} switchFavorite={switchFavorite} setTodos={setTodos} />
-      </TodoWrapper>
-    </TodoSection>
+    <TodoTabs>
+      <TabList>
+        <TabLink>all</TabLink>
+        <TabLink>☆</TabLink>
+      </TabList>
+      <TabPanel>
+        <TodoWrapper>
+          <Form addTodo={addTodo} todosNum={todos.length} />
+          <List todos={todos} delTodo={delTodo} switchFavorite={switchFavorite} setTodos={setTodos} />
+        </TodoWrapper>
+      </TabPanel>
+      <TabPanel>
+        <TodoWrapper>
+          <Form addTodo={addTodo} todosNum={favoriteTodos.length} />
+          <List todos={favoriteTodos} delTodo={delTodo} switchFavorite={switchFavorite} setTodos={setTodos} />
+        </TodoWrapper>
+      </TabPanel>
+    </TodoTabs>
   )
 }
 
-export default Todo
+export default Tab
