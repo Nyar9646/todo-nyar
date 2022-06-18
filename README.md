@@ -8,6 +8,7 @@ https://nyar9646.github.io/todo-nyar/
 - Todo
   1. todo の登録・削除
   2. お気に入り
+  3. タブで、全データ / お気に入りのみ で切替え
   3. todo リストの並び替え
 
 ### Recommendation
@@ -51,6 +52,8 @@ https://nyar9646.github.io/todo-nyar/
 </details>
 
 ### Todo
+- 処理を抜き出し
+- スクロールがしにくい。スクロールがあるのかわからない
 - .env 対応
   - StrageKey
 - レスポンシブ確認

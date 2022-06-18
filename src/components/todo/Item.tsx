@@ -3,7 +3,9 @@ import { Draggable, DraggableProvided } from "react-beautiful-dnd";
 import styled from "styled-components";
 import { ListItem } from "@material-ui/core";
 
-import { FavoriteStar } from "../../utils/FavoriteShape";
+import FavoriteStar from "../../utils/shapes/FavoriteStar";
+import HamIcon from "../organisms/HamIcon";
+import XButton from "../../utils/shapes/XButton";
 
 const TodoItem = styled(ListItem)`
   display: flex;
@@ -34,27 +36,8 @@ const TodoContent = styled.span`
   text-overflow: ellipsis;
   padding-left: 1rem;
 `
-const DeleteButton = styled.button`
-  display: block;
-  position: relative;
-  background-color: #f1ffff;
-  right: 1rem;
-  cursor: pointer;
-  &:before, &:after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 3px;
-    height: 3rem;
-    background: #999;
-  };
-  &:before {
-    transform: translate(-50%, -50%) rotate(45deg)
-  }
-  &:after {
-    transform: translate(-50%, -50%) rotate(-45deg)
-  }
+const ButtonWrapper = styled.div`
+  display: flex;
 `
 
 const Item = ({todo, delTodo, switchFavorite}): JSX.Element => {
@@ -66,7 +49,10 @@ const Item = ({todo, delTodo, switchFavorite}): JSX.Element => {
             <FavoriteStar isSwitching={todo.isFavorite} onClick={() => switchFavorite(todo.id)} />
             <TodoContent>{todo.content}</TodoContent>
           </TodoLabel>
-          <DeleteButton onClick={() => delTodo(todo.id)}/>
+          <ButtonWrapper>
+            <HamIcon />
+            <XButton onClick={() => delTodo(todo.id)}/>
+          </ButtonWrapper>
         </TodoItem>
       )}
     </Draggable>

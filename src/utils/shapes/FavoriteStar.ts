@@ -36,7 +36,7 @@ const pseudoStar = (size: number): styled.css => {
   `
 }
 
-export const FavoriteStar = styled.div`
+const FavoriteStar = styled.div`
   position: relative;
   ${({isSwitching}) => basicStar(switchStarColor(isSwitching), defaultFill, defaultSize)}
   transform: rotate(-37deg);
@@ -65,3 +65,5 @@ export const FavoriteStar = styled.div`
     }
   }
 `
+
+export default FavoriteStar

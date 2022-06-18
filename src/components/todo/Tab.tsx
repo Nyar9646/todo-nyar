@@ -12,7 +12,7 @@ import List from "./List";
 const StrageKey: string = 'strage/todos'
 
 const TodoTabs = styled(Tabs)`
-  width: 50%;
+  width: 56%;
   height: 88vh;
   overflow: hidden;
   padding: 1rem;
