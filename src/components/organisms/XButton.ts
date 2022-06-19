@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { DEFAULT_BUTTON_COLOR, HOVER_BUTTON_COLOR } from '../../utils/constants'
 
 const XButton = styled.button`
   display: block;
@@ -6,12 +7,13 @@ const XButton = styled.button`
   position: relative;
   background: rgba(0, 0, 0, 0);
   cursor: pointer;
+
   &:before, &:after {
     content: "";
     position: absolute;
     width: 3px;
     height: 3rem;
-    background: #ccc;
+    background: ${DEFAULT_BUTTON_COLOR};
   };
   &:before {
     transform: translate(-50%, -50%) rotate(45deg)
@@ -21,7 +23,7 @@ const XButton = styled.button`
   }
   &:hover {
     &:before, &:after {
-      background: #999;
+      background: ${HOVER_BUTTON_COLOR};
     }
   }
 `

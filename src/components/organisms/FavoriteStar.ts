@@ -20,21 +20,17 @@ const animation = keyframes`
   50% { transform: scale(0.98, 1.15) }
 `
 
-const basicStar = (color: string, fill: number, size: number): styled.css => {
-  return `
-    border-bottom: ${toStr(fill)}px solid ${color};
-    border-right: ${toStr(size)}px solid transparent;
-    border-left: ${toStr(size)}px solid transparent;
-  `
-}
+const basicStar = (color: string, fill: number, size: number): styled.css => `
+  border-bottom: ${toStr(fill)}px solid ${color};
+  border-right: ${toStr(size)}px solid transparent;
+  border-left: ${toStr(size)}px solid transparent;
+`
 
-const pseudoStar = (size: number): styled.css => {
-  return `
-    content: "";
-    position: absolute;
-    left: -${toStr(size)}px;
-  `
-}
+const pseudoStar = (): styled.css => `
+  content: "";
+  position: absolute;
+  left: -${toStr(defaultSize)}px;
+`
 
 const FavoriteStar = styled.div`
   position: relative;
@@ -48,7 +44,7 @@ const FavoriteStar = styled.div`
     animation-iteration-count: infinite;
   }
   &:before, &:after {
-    ${pseudoStar(defaultSize)}
+    ${pseudoStar()}
     ${({isSwitching}) => basicStar(switchStarColor(isSwitching), defaultFill, defaultSize)}
   }
   &:before {

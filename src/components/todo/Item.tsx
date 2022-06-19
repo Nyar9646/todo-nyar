@@ -3,9 +3,10 @@ import { Draggable, DraggableProvided } from "react-beautiful-dnd";
 import styled from "styled-components";
 import { ListItem } from "@material-ui/core";
 
-import FavoriteStar from "../../utils/shapes/FavoriteStar";
-import HamIcon from "../organisms/HamIcon";
-import XButton from "../../utils/shapes/XButton";
+import { CONTENTS_FONT_SIZE } from "../../utils/constants";
+import FavoriteStar from "../organisms/FavoriteStar";
+import HamButton from "../organisms/HamButton";
+import XButton from "../organisms/XButton";
 
 const TodoItem = styled(ListItem)`
   display: flex;
@@ -15,6 +16,7 @@ const TodoItem = styled(ListItem)`
   background-color: #f1ffff;
   margin-bottom: 1rem;
   cursor: grab;
+
   &:hover {
     background-color: #dfd;
   }
@@ -31,7 +33,7 @@ const TodoLabel = styled.span`
 `
 const TodoContent = styled.span`
   white-space: nowrap;
-  font-size: 16px;
+  font-size: ${CONTENTS_FONT_SIZE};
   overflow: hidden;
   text-overflow: ellipsis;
   padding-left: 1rem;
@@ -50,7 +52,7 @@ const Item = ({todo, delTodo, switchFavorite}): JSX.Element => {
             <TodoContent>{todo.content}</TodoContent>
           </TodoLabel>
           <ButtonWrapper>
-            <HamIcon />
+            <HamButton />
             <XButton onClick={() => delTodo(todo.id)}/>
           </ButtonWrapper>
         </TodoItem>

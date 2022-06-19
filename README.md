@@ -52,10 +52,12 @@ https://nyar9646.github.io/todo-nyar/
 </details>
 
 ### Todo
-- 処理を抜き出し
+- 入力制御
 - スクロールがしにくい。スクロールがあるのかわからない
+- リストのハンバーガーボタンの太さがアイテムで異なる
 - .env 対応
   - StrageKey
+  - constants
 - レスポンシブ確認
 
 <details>
