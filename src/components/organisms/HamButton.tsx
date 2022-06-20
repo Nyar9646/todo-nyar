@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { DEFAULT_BUTTON_COLOR, HOVER_BUTTON_COLOR } from '../../utils/constants'
 
 const commonStyle = (): styled.css => `
-    display: inline-block;
-    box-sizing: border-box;
+  display: inline-block;
+  box-sizing: border-box;
 `
 
 const OuterHam = styled.button`
@@ -14,12 +14,16 @@ const OuterHam = styled.button`
   height: 2.5rem;
   background: none;
   appearance: none;
-  cursor: pointer;
+  cursor: grab;
+  margin: 1rem;
 
   &:hover {
     * {
       background-color: ${HOVER_BUTTON_COLOR};
     }
+  }
+  &:active {
+    cursor: grabbing;
   }
 `
 const InnerHam = styled.span`

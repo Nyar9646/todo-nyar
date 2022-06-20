@@ -4,13 +4,12 @@ import { arrayMoveImmutable } from "array-move";
 import styled from "styled-components";
 import { List as UiList } from "@material-ui/core";
 
+import { LIST_HEIGHT } from "../../utils/constants";
 import { TodoObj } from "../../utils/interfaces";
 import Item from "./Item";
 
-const listHeight: string = '90%'
-
 const StyledTodoList = styled(UiList)`
-  height: ${listHeight};
+  height: ${LIST_HEIGHT};
   overflow: scroll;
 `
 

@@ -3,7 +3,7 @@ import { Draggable, DraggableProvided } from "react-beautiful-dnd";
 import styled from "styled-components";
 import { ListItem } from "@material-ui/core";
 
-import { CONTENTS_FONT_SIZE } from "../../utils/constants";
+import { DEFAULT_ITEM_COLOR, HOVER_ITEM_COLOR, CONTENTS_FONT_SIZE } from "../../utils/constants";
 import FavoriteStar from "../organisms/FavoriteStar";
 import HamButton from "../organisms/HamButton";
 import XButton from "../organisms/XButton";
@@ -13,12 +13,12 @@ const TodoItem = styled(ListItem)`
   height: 4.5rem;
   justify-content: space-between;
   border-radius: 4px;
-  background-color: #f1ffff;
+  background-color: ${DEFAULT_ITEM_COLOR};
   margin-bottom: 1rem;
   cursor: grab;
 
   &:hover {
-    background-color: #dfd;
+    background-color: ${HOVER_ITEM_COLOR};
   }
   &:active {
     box-shadow: 0 0 1rem 2px #fff;
@@ -28,18 +28,22 @@ const TodoItem = styled(ListItem)`
 `
 const TodoLabel = styled.span`
   display: flex;
-  align-items: center;
   width: 100%;
+  align-items: center;
 `
-const TodoContent = styled.span`
+const TodoContent = styled.input`
+  width: 100%;
+  height: 3rem;
+  border: none;
+  background-color: ${DEFAULT_ITEM_COLOR};
   white-space: nowrap;
   font-size: ${CONTENTS_FONT_SIZE};
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-left: 1rem;
+  margin-left: 1rem;
 `
-const ButtonWrapper = styled.div`
-  display: flex;
+const DraggableHam = styled(HamButton)`
+  pointer-events: auto;
 `
 
 const Item = ({todo, delTodo, switchFavorite}): JSX.Element => {
@@ -49,12 +53,10 @@ const Item = ({todo, delTodo, switchFavorite}): JSX.Element => {
         <TodoItem ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
           <TodoLabel>
             <FavoriteStar isSwitching={todo.isFavorite} onClick={() => switchFavorite(todo.id)} />
-            <TodoContent>{todo.content}</TodoContent>
+            <TodoContent value={todo.content} />
           </TodoLabel>
-          <ButtonWrapper>
-            <HamButton />
-            <XButton onClick={() => delTodo(todo.id)}/>
-          </ButtonWrapper>
+          <DraggableHam />
+          <XButton onClick={() => delTodo(todo.id)}/>
         </TodoItem>
       )}
     </Draggable>
