@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 import { Draggable, DraggableProvided } from "react-beautiful-dnd";
 import styled from "styled-components";
 import { ListItem } from "@material-ui/core";
@@ -26,11 +27,6 @@ const TodoItem = styled(ListItem)`
     cursor: grabbing;
   }
 `
-const TodoLabel = styled.span`
-  display: flex;
-  width: 100%;
-  align-items: center;
-`
 const TodoContent = styled.input`
   width: 100%;
   height: 3rem;
@@ -46,15 +42,23 @@ const DraggableHam = styled(HamButton)`
   pointer-events: auto;
 `
 
-const Item = ({todo, delTodo, switchFavorite}): JSX.Element => {
+const Item = ({todo, delTodo, updTodoContent, switchFavorite}): JSX.Element => {
+  const [inputValue, setInputValue] = useState(todo.content)
+
+  // todo :enter で更新処理をはしらせる
+  const handleUpdTodo = (e) => {
+    console.log(e.target.value)
+    console.log(inputValue)
+    setInputValue(e.target.value)
+    updTodoContent(todo.id, inputValue)
+  }
+
   return (
     <Draggable key={todo.id} draggableId={todo.id} index={todo.order}>
       {(provided: DraggableProvided) => (
         <TodoItem ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-          <TodoLabel>
-            <FavoriteStar isSwitching={todo.isFavorite} onClick={() => switchFavorite(todo.id)} />
-            <TodoContent value={todo.content} />
-          </TodoLabel>
+          <FavoriteStar isSwitching={todo.isFavorite} onClick={() => switchFavorite(todo.id)} />
+          <TodoContent onChange={handleUpdTodo} defaultValue={inputValue} />
           <DraggableHam />
           <XButton onClick={() => delTodo(todo.id)}/>
         </TodoItem>

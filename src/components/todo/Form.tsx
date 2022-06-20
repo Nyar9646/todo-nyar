@@ -18,11 +18,7 @@ const Form = ({addTodo, todosNum}): JSX.Element => {
 
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault()
-
-    if (val === '') {
-      return
-    }
-
+    if (val === '') return
     addTodo(val)
     setVal('')
   }

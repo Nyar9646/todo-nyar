@@ -1,8 +1,8 @@
 import * as React from "react";
 import { DragDropContext, Droppable, DroppableProvided } from "react-beautiful-dnd";
 import { arrayMoveImmutable } from "array-move";
-import styled from "styled-components";
 import { List as UiList } from "@material-ui/core";
+import styled from "styled-components";
 
 import { LIST_HEIGHT } from "../../utils/constants";
 import { TodoObj } from "../../utils/interfaces";
@@ -13,7 +13,7 @@ const StyledTodoList = styled(UiList)`
   overflow: scroll;
 `
 
-const List = ({todos, delTodo, switchFavorite, setTodos}): JSX.Element => {
+const List = ({todos, delTodo, updTodoContent, switchFavorite, setTodos}): JSX.Element => {
   const handleOnDragEnd = (result: any): void => {
     if (!result.destination) return
 
@@ -36,7 +36,9 @@ const List = ({todos, delTodo, switchFavorite, setTodos}): JSX.Element => {
             {...provided.droppableProps} ref={provided.innerRef}
           >
             {todos.map((todo: TodoObj) => (
-              <Item key={todo.id} todo={todo} delTodo={delTodo} switchFavorite={switchFavorite} />
+              <Item key={todo.id} todo={todo}
+                delTodo={delTodo} updTodoContent={updTodoContent} switchFavorite={switchFavorite}
+              />
             ))}
             {provided.placeholder}
           </StyledTodoList>
