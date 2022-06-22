@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { DEFAULT_BUTTON_COLOR, HOVER_BUTTON_COLOR } from '../../utils/constants'
+import { BORDER_RADIUS, DEFAULT_BUTTON_COLOR, HOVER_BUTTON_COLOR } from '../../utils/constants'
 
 const commonStyle = (): styled.css => `
   display: inline-block;
@@ -33,7 +33,7 @@ const InnerHam = styled.span`
   width: 100%;
   height: 3px;
   background-color: ${DEFAULT_BUTTON_COLOR};
-  border-radius: 4px;
+  border-radius: ${BORDER_RADIUS};
 
   &:nth-of-type(1) {
     top: 0;

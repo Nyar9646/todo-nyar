@@ -6,10 +6,10 @@ https://nyar9646.github.io/todo-nyar/
 
 ## function
 - Todo
-  1. todo の登録・削除
-  2. お気に入り
-  3. タブで、全データ / お気に入りのみ で切替え
-  3. todo リストの並び替え
+  - todo の登録・変更・削除
+  - お気に入り
+  - タブで、全データ / お気に入りのみ の切替
+  - todo リストの並び替え
 
 ### Recommendation
 - Chrome97
@@ -17,8 +17,9 @@ https://nyar9646.github.io/todo-nyar/
 ### Code
 - ES2015
 
-<!-- ### Way made
-1年勉強した内容を盛り込みたかった -->
+### Way made
+1年勉強した内容を盛り込みたかった
+  todoリストは基本中の基本だが、それを可能な限りカスタマイズしてみたかった
 
 ---
 
@@ -32,31 +33,33 @@ https://nyar9646.github.io/todo-nyar/
 - React hooks
 
 ### a little feature
-- styled-component
-- typescript
-- webpack-dev-server
-- react-beautifl-dnd
+- styled-component : react上でcssを記述可能にする
+- typescript : 型つけ
+- webpack-dev-server : server側の自動更新
+- react-beautifl-dnd : リストドラッグ
 - reset CSS
 
 <details>
 <summary>installs</summary>
-- $ npx create-react-app todo-nyar
-- $ yarn add webpack webpack-cli
-- $ yarn add typescript
-- $ yarn add ts-loader @types/react @types/react-dom
-- $ yarn add webpack-dev-server
-- $ yarn add nanoid
-- $ yarn add styled-components @material-ui/core
-- $ yarn add array-move react-beautiful-dnd @types/react-beautiful-dnd
-- $ yarn add react-tabs
+$ npx create-react-app todo-nyar
+  $ yarn add webpack webpack-cli
+  $ yarn add typescript
+  $ yarn add ts-loader @types/react @types/react-dom
+  $ yarn add webpack-dev-server
+  $ yarn add nanoid
+  $ yarn add styled-components @material-ui/core
+  $ yarn add array-move react-beautiful-dnd @types/react-beautiful-dnd
+  $ yarn add react-tabs
+
 </details>
 
 ### Todo
-- リストから変更
+- git pages 公開
 - 入力制御
 - バケツリレー排除
 - スクロールがしにくい。スクロールがあるのかわからない
 - リストのハンバーガーボタンの太さがアイテムで異なる
+- リストのハンバーガーボタンからドラッグ可能にする
 - .env 対応
   - StrageKey
   - constants
@@ -64,5 +67,5 @@ https://nyar9646.github.io/todo-nyar/
 
 <details>
 <summary>苦労した点</summary>
-- リストドラッグの機能を、当初は react-draggable-dnd を使用しようとしたが、うまくいかず、調整に時間がかかりました。
+- リストドラッグの機能に、当初は react-draggable-dnd を使おうとしたが、typescript を反映する際にうまくいかず、調査に時間がかかった
 </details>

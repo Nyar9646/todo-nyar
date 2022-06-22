@@ -4,16 +4,23 @@ import { Draggable, DraggableProvided } from "react-beautiful-dnd";
 import styled from "styled-components";
 import { ListItem } from "@material-ui/core";
 
-import { DEFAULT_ITEM_COLOR, HOVER_ITEM_COLOR, CONTENTS_FONT_SIZE } from "../../utils/constants";
+import {
+  DEFAULT_ITEM_COLOR,
+  HOVER_ITEM_COLOR,
+  CONTENTS_FONT_SIZE,
+  ITEM_HEIGHT,
+  BORDER_RADIUS,
+  SHADOW_COLOR
+} from "../../utils/constants";
 import FavoriteStar from "../organisms/FavoriteStar";
 import HamButton from "../organisms/HamButton";
 import XButton from "../organisms/XButton";
 
 const TodoItem = styled(ListItem)`
   display: flex;
-  height: 4.5rem;
+  height: ${ITEM_HEIGHT};
   justify-content: space-between;
-  border-radius: 4px;
+  border-radius: ${BORDER_RADIUS};
   background-color: ${DEFAULT_ITEM_COLOR};
   margin-bottom: 1rem;
   cursor: grab;
@@ -22,7 +29,7 @@ const TodoItem = styled(ListItem)`
     background-color: ${HOVER_ITEM_COLOR};
   }
   &:active {
-    box-shadow: 0 0 1rem 2px #fff;
+    box-shadow: 0 0 1rem 2px ${SHADOW_COLOR};
     transition: box-shadow .3s;
     cursor: grabbing;
   }
@@ -39,26 +46,28 @@ const TodoContent = styled.input`
   margin-left: 1rem;
 `
 const DraggableHam = styled(HamButton)`
-  pointer-events: auto;
 `
 
-const Item = ({todo, delTodo, updTodoContent, switchFavorite}): JSX.Element => {
-  const [inputValue, setInputValue] = useState(todo.content)
+const Item = ({todo, delTodo, updTodoContent, updTodoFavorite}): JSX.Element => {
+  const [itemValue, setItemValue] = useState(todo.content)
 
-  // todo :enter で更新処理をはしらせる
-  const handleUpdTodo = (e) => {
-    console.log(e.target.value)
-    console.log(inputValue)
-    setInputValue(e.target.value)
-    updTodoContent(todo.id, inputValue)
+  const handleUpdTodo = (keyEvent: React.KeyboardEvent<HTMLInputElement>) => {
+    if (keyEvent.key === 'Enter') {
+      keyEvent.preventDefault()
+      updTodoContent(todo.id, itemValue)
+    }
   }
 
   return (
     <Draggable key={todo.id} draggableId={todo.id} index={todo.order}>
       {(provided: DraggableProvided) => (
         <TodoItem ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-          <FavoriteStar isSwitching={todo.isFavorite} onClick={() => switchFavorite(todo.id)} />
-          <TodoContent onChange={handleUpdTodo} defaultValue={inputValue} />
+          <FavoriteStar isSwitching={todo.isFavorite} onClick={() => updTodoFavorite(todo.id)} />
+          <TodoContent
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setItemValue(e.target.value)}
+            onKeyDown={handleUpdTodo}
+            defaultValue={itemValue}
+          />
           <DraggableHam />
           <XButton onClick={() => delTodo(todo.id)}/>
         </TodoItem>
