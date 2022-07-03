@@ -2,6 +2,7 @@
   "name": "todo-nyar",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://Nyar9646.github.io/todo-nyar/",
   "dependencies": {
     "@material-ui/core": "^4.12.4",
     "@testing-library/jest-dom": "^5.16.4",
@@ -29,7 +30,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "rm": "rm -rf docs",
+    "mv": "mv build docs",
+    "git": "git add . && git commit && git push origin main",
+    "deploy": "yarn run rm && yarn run build && yarn run mv && yarn run git"
   },
   "eslintConfig": {
     "extends": [
