@@ -54,16 +54,16 @@ $ npx create-react-app todo-nyar
 </details>
 
 ### Todo
-- git pages 公開
 - 入力制御
 - バケツリレー排除
-- スクロールがしにくい。スクロールがあるのかわからない
-- リストのハンバーガーボタンの太さがアイテムで異なる
 - リストのハンバーガーボタンからドラッグ可能にする
+- リストのハンバーガーボタンの太さがアイテムで異なる
+- スクロールがしにくい。スクロールがあるのかわからない
 - .env 対応
   - StrageKey
   - constants
 - レスポンシブ確認
+- favicon
 
 <details>
 <summary>苦労した点</summary>
