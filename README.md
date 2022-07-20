@@ -54,11 +54,8 @@ $ npx create-react-app todo-nyar
 </details>
 
 ### Todo
+- reactContext化, typeprops化
 - 入力制御
-- バケツリレー排除
-- リストのハンバーガーボタンからドラッグ可能にする
-- リストのハンバーガーボタンの太さがアイテムで異なる
-- スクロールがしにくい。スクロールがあるのかわからない
 - .env 対応
   - StrageKey
   - constants

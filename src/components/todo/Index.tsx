@@ -8,7 +8,7 @@ import { TodoObj } from "../../utils/interfaces";
 import { canNotUseLocalStorage, toDataArray, setLocaoStorageWithObject } from "../../utils/useLocalStorage";
 import Tab from "./Tab";
 
-const Todo: React.FC = (): JSX.Element => {
+const Todo = (): JSX.Element => {
   if (canNotUseLocalStorage) {
     alert('当機能は、WEB Strage である、localStorage の機能を用いています。この機能が有効であることを確認してください')
   }

@@ -46,7 +46,7 @@ const InnerHam = styled.span`
   }
 `
 
-const HamButton: React.FC = (): JSX.Element => (
+const HamButton = (): JSX.Element => (
   <OuterHam>
     <InnerHam />
     <InnerHam />

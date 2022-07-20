@@ -7,7 +7,7 @@ import Header from "./components/Header"
 import Todo from "./components/todo/Index";
 import Footer from "./components/Footer";
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <>
       <Header />

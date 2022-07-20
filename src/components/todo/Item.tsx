@@ -13,7 +13,6 @@ import {
   SHADOW_COLOR
 } from "../../utils/constants";
 import FavoriteStar from "../organisms/FavoriteStar";
-import HamButton from "../organisms/HamButton";
 import XButton from "../organisms/XButton";
 
 const TodoItem = styled(ListItem)`
@@ -45,8 +44,6 @@ const TodoContent = styled.input`
   text-overflow: ellipsis;
   margin-left: 1rem;
 `
-const DraggableHam = styled(HamButton)`
-`
 
 const Item = ({todo, delTodo, updTodoContent, updTodoFavorite}): JSX.Element => {
   const [itemValue, setItemValue] = useState(todo.content)
@@ -68,8 +65,8 @@ const Item = ({todo, delTodo, updTodoContent, updTodoFavorite}): JSX.Element => 
             onKeyDown={handleUpdTodo}
             defaultValue={itemValue}
           />
-          <DraggableHam />
           <XButton onClick={() => delTodo(todo.id)}/>
+          　
         </TodoItem>
       )}
     </Draggable>
