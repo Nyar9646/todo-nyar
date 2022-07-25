@@ -4,6 +4,6 @@ export const toDataArray = (key: string): any => JSON.parse(localStorage.getItem
 
 const toDataJson = (data: object): any => JSON.stringify(data)
 
-export const setLocaoStorageWithObject = (key: string, data: object): void => {
+export const setLocalStorageWithObject = (key: string, data: object): void => {
   localStorage.setItem(key, toDataJson(data))
 }

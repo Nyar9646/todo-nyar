@@ -55,6 +55,7 @@ $ npx create-react-app todo-nyar
 
 ### Todo
 - reactContext化, typeprops化
+- Tab で ジェネリック型を使用
 - 入力制御
 - .env 対応
   - StrageKey

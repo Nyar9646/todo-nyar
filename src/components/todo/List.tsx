@@ -4,7 +4,7 @@ import { List as UiList } from "@material-ui/core";
 import styled from "styled-components";
 
 import { LIST_HEIGHT } from "../../utils/constants";
-import { TodoObj } from "../../utils/interfaces";
+import { TodoObj } from "../../utils/types";
 import Item from "./Item";
 
 const TodoList = styled(UiList)`

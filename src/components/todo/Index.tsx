@@ -1,12 +1,14 @@
 import * as React from "react";
-import { useState, useEffect } from "react"
+import { createContext, useState, useEffect } from "react"
 import { nanoid } from "nanoid";
 import { arrayMoveImmutable } from "array-move";
 
 import { STORAGE_KEY } from "../../utils/constants";
-import { TodoObj } from "../../utils/interfaces";
-import { canNotUseLocalStorage, toDataArray, setLocaoStorageWithObject } from "../../utils/useLocalStorage";
+import { TodoObj, TodoDataContextObj } from "../../utils/types";
+import { canNotUseLocalStorage, toDataArray, setLocalStorageWithObject } from "../../store/useLocalStorage";
 import Tab from "./Tab";
+
+export const TodoDataContext = createContext(null)
 
 const Todo = (): JSX.Element => {
   if (canNotUseLocalStorage) {
@@ -15,7 +17,7 @@ const Todo = (): JSX.Element => {
 
   const [todos, setTodos] = useState(toDataArray(STORAGE_KEY) || [])
 
-  const getFavoriteTodos = ():[TodoObj] => todos.filter((todos: TodoObj) => todos.isFavorite === true)
+  const getFavoriteTodos = ():[TodoObj] => todos.filter((todo: TodoObj) => todo.isFavorite === true)
   let favoriteTodos: [TodoObj] = getFavoriteTodos()
 
   const addTodo = (newContent: string): void => {
@@ -79,19 +81,25 @@ const Todo = (): JSX.Element => {
 
   useEffect(() => {
     favoriteTodos = getFavoriteTodos()
-    setLocaoStorageWithObject(STORAGE_KEY, todos)
+    setLocalStorageWithObject(STORAGE_KEY, todos)
     console.log(todos)
   }, [todos])
 
+  const todoData: TodoDataContextObj = {
+    todos,
+    favoriteTodos,
+  }
+
   return (
-    <Tab
-      todos={todos} favoriteTodos={favoriteTodos}
-      addTodo={addTodo}
-      delTodo={delTodo}
-      updTodoContent={updTodoContent}
-      updTodoFavorite={updTodoFavorite}
-      updTodoOrder={updTodoOrder}
-    />
+    <TodoDataContext.Provider value={todoData} >
+      <Tab
+        addTodo={addTodo}
+        delTodo={delTodo}
+        updTodoContent={updTodoContent}
+        updTodoFavorite={updTodoFavorite}
+        updTodoOrder={updTodoOrder}
+      />
+    </TodoDataContext.Provider>
   )
 }
 
